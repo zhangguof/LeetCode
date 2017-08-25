@@ -55,7 +55,7 @@ public:
 
 };
 
-int testmain(){
+int testmain1(){
 	Solution sol;
     cout<<sol.reverseVowels("leetcode")<<endl;
     cout<<sol.reverseVowels("hEllo")<<endl;

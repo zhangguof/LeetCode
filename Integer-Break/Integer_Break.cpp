@@ -38,7 +38,7 @@ public:
     }
 };
 
-int main()
+int testmain2()
 {
     Solution sol;
     cout<<sol.integerBreak(10)<<endl;

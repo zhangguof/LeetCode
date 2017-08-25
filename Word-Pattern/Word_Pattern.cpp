@@ -63,7 +63,7 @@ public:
     }
 };
 
-int main()
+int main3()
 {
     Solution sol;
     //cout<<sol.wordPattern("a", "cat")<<endl;
