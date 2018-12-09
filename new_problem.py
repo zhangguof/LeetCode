@@ -8,7 +8,7 @@ make_str='''CC=c++
 target=%s
 all: ${target}
 ${target}: ${target}.cpp
-	$CC -o $@ $^
+	${CC} -std=c++11 -o $@ $^
 
 clean:
 	rm ${target}
