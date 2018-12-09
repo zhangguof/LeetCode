@@ -6,8 +6,8 @@ import sys
 
 make_str='''CC=c++
 target=%s
-all: ${target}
-${target}: ${target}.cpp
+all: a.out
+a.out: ${target}.cpp
 	${CC} -std=c++11 -o $@ $^
 
 clean:
