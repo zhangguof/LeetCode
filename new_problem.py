@@ -14,6 +14,22 @@ clean:
 	rm ${target}
 '''
 
+cpp_str='''
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <stdlib.h>
+
+using namespace std;
+
+int main()
+{
+
+	return 0;
+}
+'''
+
 def main():
 	argv = sys.argv
 	name = "_".join(argv[1:])
