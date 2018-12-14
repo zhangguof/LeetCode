@@ -39,7 +39,7 @@ def main():
 	f_name = name+"/"+name+".cpp"
 	if not os.path.exists(f_name):
 		with open(f_name,"w") as f:
-			pass
+			f.write(cpp_str)
 		print "create file:%s"%f_name
 	f_name = name+"/"+"Makefile"
 	if not os.path.exists(f_name):

@@ -44,7 +44,7 @@ public:
 		int n;
 		pri_queue(int max_n){
 			n = 0;
-			num2idx.resize(max_n);
+			num2idx.resize(max_n,-1);
 		}
 		void up_adjust(int i)
 		{
@@ -102,6 +102,7 @@ public:
 			auto node = v[0];
 			v[0] = v[n-1];
 			num2idx[v[0].num] = 0;
+			num2idx[node.num] = -1;
 
 			v.pop_back();
 			n--;
@@ -133,8 +134,12 @@ public:
 		{
 			return num2idx[num];
 		}
+		bool has_num(int num)
+		{
+			return num2idx[num] != -1;
+		}
 		bool empty(){return n==0;}
-		
+
 		void print()
 		{
 			for(auto it:v)
@@ -153,33 +158,12 @@ public:
 		// std::vector<bool> acc_mark(n+1,false);
 		dist[k] = 0;
 		pri_queue pqueue(n+1);
-		for(int i=1;i<=n;++i)
-		{
-			if(i==k)
-			{
-				pqueue.push(Node(k,0));
-			}
-			else
-			{
-				pqueue.push(Node(i,9999999));
-			}
-		}
+		pqueue.push(Node(k,0));
+
 		
 		while(1)
 		{
-			//extrac min
-			// int min_i = -1;
-			// int min_v = -1;
-			// for(int i=1;i<=n;++i)
-			// {
-			// 	if(acc_mark[i]||dist[i]==-1) continue;
-			// 	if(min_v==-1 || min_v>dist[i])
-			// 	{
-			// 		min_i = i;
-			// 		min_v = dist[i];
-			// 	}
-			// }
-			// if(min_i == -1) break;
+
 			if(pqueue.empty()) break;
 			auto min_n = pqueue.extrac_min();
 			int min_i = min_n.num;
@@ -193,7 +177,14 @@ public:
 				{
 					dist[it.num] = d;
 					auto idx = pqueue.get_idx(it.num);
-					pqueue.modify(idx,d);
+					if(idx==-1)
+					{
+						pqueue.push(Node(it.num,d));
+					}
+					else
+					{
+						pqueue.modify(idx,d);
+					}
 				}
 			}
 		}
