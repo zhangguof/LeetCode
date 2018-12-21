@@ -11,7 +11,7 @@ a.out: ${target}.cpp
 	${CC} -std=c++11 -o $@ $^
 
 clean:
-	rm ${target}
+	rm a.out
 '''
 
 cpp_str='''
