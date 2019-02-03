@@ -1,0 +1,8 @@
+CC=c++
+target=Evaluate_Reverse_Polish_Notation
+all: a.out
+a.out: ${target}.cpp
+	${CC} -std=c++11 -o $@ $^ -g
+
+clean:
+	rm a.out
